@@ -1,0 +1,32 @@
+{
+    "name": "oro/commerce-demo-checkouts",
+    "description": "OroCommerce checkout customization examples",
+    "homepage": "https://github.com/oroinc/commerce-demo-checkouts",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "Oro, Inc",
+            "homepage": "https://www.orocommerce.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Oro\\Bundle\\AlternativeCheckoutBundle\\": "src/Oro/Bundle/AlternativeCheckoutBundle"},
+        "exclude-from-classmap": ["/Tests/"]
+    },
+    "require": {
+        "oro/commerce": "4.2.*"
+    },
+    "repositories": {
+        "oro": {
+            "type": "composer",
+            "url": "https://packagist.oroinc.com"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "branch-alias": {
+            "dev-master": "4.2-dev"
+        }
+    }
+}

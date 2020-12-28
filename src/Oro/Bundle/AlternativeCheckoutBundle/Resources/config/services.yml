@@ -1,0 +1,44 @@
+services:
+    oro_alternativecheckout.conditions.less_order_total_limit:
+        class: 'Oro\Bundle\AlternativeCheckoutBundle\Condition\OrderTotalLimit'
+        arguments:
+            - '@oro_pricing.subtotal_processor.total_processor_provider'
+            - '@oro_checkout.data_provider.manager.checkout_line_items'
+        tags:
+            - { name: oro_action.condition, alias: less_order_total_limit }
+
+    oro_alternativecheckout.block_type.extension.checkout_form_fields:
+        parent: oro_layout.block_type.extension.abstract_configurable
+        calls:
+            - [setOptionsConfig, [{transitionData: ~}]]
+            - [setExtendedType, ['checkout_form_fields']]
+        tags:
+            - { name: layout.block_type_extension, alias: checkout_form_fields }
+
+    oro_alternativecheckout.event_listener.quantity_to_order_condition_listener:
+        parent: oro_inventory.event_listener.quantity_to_order_condition_listener
+        class: Oro\Bundle\AlternativeCheckoutBundle\EventListener\QuantityToOrderConditionListener
+
+    oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.abstract:
+        abstract: true
+        class: Oro\Bundle\CheckoutBundle\Datagrid\FrontendShoppingListGridExtension
+        arguments:
+            -
+                - 'frontend-customer-user-shopping-lists-grid'
+                - 'frontend-customer-user-shopping-list-select-grid'
+            -
+                - 'b2b_flow_alternative_checkout_start_from_shoppinglist'
+
+    oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.before_actions:
+        parent: oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.abstract
+        arguments:
+            - '-250'
+        tags:
+            - { name: oro_datagrid.extension }
+
+    oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.after_actions:
+        parent: oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.abstract
+        arguments:
+            - '250'
+        tags:
+            - { name: oro_datagrid.extension }
