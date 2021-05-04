@@ -78,7 +78,7 @@ class OrderControllerTest extends FrontendWebTestCase
         $expectedCheckouts = $this->getCheckoutsByReferences($expectedCheckouts);
         $actualCheckouts = $this->prepareCheckouts($checkouts);
         $container = $this->getContainer();
-        /** @var  Checkout $expectedCheckout */
+        /** @var Checkout $expectedCheckout */
         foreach ($expectedCheckouts as $id => $expectedCheckout) {
             $this->assertTrue(isset($actualCheckouts[$id]));
             /** @var Subtotal $subtotal */
@@ -129,7 +129,7 @@ class OrderControllerTest extends FrontendWebTestCase
 
         $expectedCheckoutIds = array_keys($this->getCheckoutsByReferences($expectedCheckouts));
         $actualCheckouts = $this->prepareCheckouts($checkouts);
-        /** @var  Checkout $expectedCheckout */
+        /** @var Checkout $expectedCheckout */
         foreach ($expectedCheckoutIds as $id) {
             $this->assertTrue(isset($actualCheckouts[$id]));
             $actualCheckout = $actualCheckouts[$id];
