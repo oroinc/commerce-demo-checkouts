@@ -4,8 +4,8 @@ layout:
     actions:
         - '@setBlockTheme':
             themes:
-                - 'OroCheckoutBundle:layouts:default/oro_checkout_frontend_checkout/templates/right_buttons.html.twig'
-                - 'OroAlternativeCheckoutBundle:layouts:default/oro_checkout_frontend_checkout/templates/approve_request.html.twig'
+                - '@OroCheckout/layouts/default/oro_checkout_frontend_checkout/templates/right_buttons.html.twig'
+                - '@OroAlternativeCheckout/layouts/default/oro_checkout_frontend_checkout/templates/approve_request.html.twig'
 
         - '@add':
             id: payment_additional_data
