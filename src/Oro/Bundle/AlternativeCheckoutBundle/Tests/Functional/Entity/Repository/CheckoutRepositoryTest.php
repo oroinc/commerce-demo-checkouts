@@ -28,9 +28,6 @@ class CheckoutRepositoryTest extends WebTestCase
         );
     }
 
-    /**
-     * @return CheckoutRepository
-     */
     protected function getRepository(): CheckoutRepository
     {
         return $this->getContainer()->get('doctrine')->getRepository(Checkout::class);
@@ -56,9 +53,6 @@ class CheckoutRepositoryTest extends WebTestCase
         );
     }
 
-    /**
-     * @return array
-     */
     public function findCheckoutByCustomerUserAndSourceCriteriaByQuoteDemandProvider(): array
     {
         return [
