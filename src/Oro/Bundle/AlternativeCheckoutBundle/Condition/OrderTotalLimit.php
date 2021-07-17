@@ -21,10 +21,6 @@ class OrderTotalLimit extends AbstractComparison
     private TotalProcessorProvider $totalsProvider;
     private CheckoutLineItemsManager $checkoutLineItemsManager;
 
-    /**
-     * @param TotalProcessorProvider $totalsProvider
-     * @param CheckoutLineItemsManager $checkoutLineItemsManager
-     */
     public function __construct(
         TotalProcessorProvider $totalsProvider,
         CheckoutLineItemsManager $checkoutLineItemsManager

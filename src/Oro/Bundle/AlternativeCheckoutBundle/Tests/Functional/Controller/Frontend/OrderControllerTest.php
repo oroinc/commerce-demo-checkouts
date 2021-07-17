@@ -94,9 +94,6 @@ class OrderControllerTest extends FrontendWebTestCase
         }
     }
 
-    /**
-     * @return array
-     */
     public function subtotalFilterDataProvider(): array
     {
         return [
@@ -140,9 +137,6 @@ class OrderControllerTest extends FrontendWebTestCase
         }
     }
 
-    /**
-     * @return array
-     */
     public function totalFilterDataProvider(): array
     {
         return [
@@ -229,10 +223,6 @@ class OrderControllerTest extends FrontendWebTestCase
         return json_decode($response->getContent(), true)['data'];
     }
 
-    /**
-     * @param array $checkouts
-     * @return array
-     */
     protected function prepareCheckouts(array $checkouts): array
     {
         $result = [];
