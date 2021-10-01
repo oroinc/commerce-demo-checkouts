@@ -90,7 +90,7 @@ class OrderControllerTest extends FrontendWebTestCase
             );
 
             $actualCheckout = $actualCheckouts[$id];
-            $this->assertEquals($formattedPrice . "\n", $actualCheckout['subtotal']);
+            $this->assertEquals($formattedPrice, $actualCheckout['subtotal']);
         }
     }
 
