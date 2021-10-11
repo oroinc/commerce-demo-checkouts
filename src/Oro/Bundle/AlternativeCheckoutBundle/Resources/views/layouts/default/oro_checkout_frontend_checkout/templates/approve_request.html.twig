@@ -12,7 +12,7 @@
         {% if workflowItem.data.get('request_approval_notes') %}
             <div class="checkout__approval-note">
                 <h5>{{ 'oro.alternativecheckout.requestApprovalNotes.label'|trans }}</h5>
-                <div>{{ workflowItem.data.get('request_approval_notes')|nl2br|raw }}</div>
+                <div>{{ workflowItem.data.get('request_approval_notes')|nl2br }}</div>
             </div>
         {% endif %}
 
