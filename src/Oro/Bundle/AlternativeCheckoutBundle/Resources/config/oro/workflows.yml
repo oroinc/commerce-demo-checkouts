@@ -817,6 +817,13 @@ workflows:
                 actions:
                     - '@save_accepted_consents':
                         acceptedConsents: $customerConsents
+                    - '@tree':
+                          conditions:
+                              '@and': #For logged customer user only
+                                  - '@not_empty': $checkout.customerUser
+                                  - '@equal': [$checkout.customerUser.isGuest, false]
+                          actions:
+                              - '@assign_value': [$customerConsents, null]
                     - '@generate_uuid': $state_token
 
             continue_to_shipping_address_definition:
@@ -871,6 +878,13 @@ workflows:
                           data.billing_address_has_shipping: $.billing_address_has_shipping
                     - '@save_accepted_consents':
                         acceptedConsents: $customerConsents
+                    - '@tree':
+                          conditions:
+                              '@and': #For logged customer user only
+                                  - '@not_empty': $checkout.customerUser
+                                  - '@equal': [$checkout.customerUser.isGuest, false]
+                          actions:
+                              - '@assign_value': [$customerConsents, null]
                     # Disables state checking in inner transition to continue_to_shipping_method.
                     - '@generate_uuid': $state_token
                     - '@tree':
