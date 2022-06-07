@@ -18,16 +18,13 @@ use Oro\Bundle\ShoppingListBundle\Tests\Functional\DataFixtures\LoadShoppingList
 
 class OrderControllerTest extends FrontendWebTestCase
 {
-    private const GRID_NAME      = 'frontend-checkouts-grid';
-    private const TOTAL_VALUE    = 510;
+    private const GRID_NAME = 'frontend-checkouts-grid';
+    private const TOTAL_VALUE = 510;
     private const SUBTOTAL_VALUE = 300;
 
-    /** @var Checkout[] */
-    private $allCheckouts;
+    /** @var Checkout[]|null */
+    private ?array $allCheckouts = null;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         $this->initClient(
@@ -36,16 +33,14 @@ class OrderControllerTest extends FrontendWebTestCase
         );
 
         $this->setCurrentWebsite('default');
-        $this->loadFixtures(
-            [
-                LoadCombinedProductPrices::class,
-                LoadOrders::class,
-                LoadQuoteAlternativeCheckoutsData::class,
-                LoadQuoteAlternativeCheckoutsSubtotalsData::class,
-                LoadShoppingListsCheckoutsData::class,
-                LoadShoppingListLineItems::class
-            ]
-        );
+        $this->loadFixtures([
+            LoadCombinedProductPrices::class,
+            LoadOrders::class,
+            LoadQuoteAlternativeCheckoutsData::class,
+            LoadQuoteAlternativeCheckoutsSubtotalsData::class,
+            LoadShoppingListsCheckoutsData::class,
+            LoadShoppingListLineItems::class
+        ]);
     }
 
     public function testCheckoutGrid(): void
@@ -58,12 +53,8 @@ class OrderControllerTest extends FrontendWebTestCase
 
     /**
      * @dataProvider subtotalFilterDataProvider
-     *
-     * @param float $value
-     * @param string $filterType
-     * @param array $expectedCheckouts
      */
-    public function testSubtotalFilter($value, $filterType, array $expectedCheckouts): void
+    public function testSubtotalFilter(float $value, int $filterType, array $expectedCheckouts): void
     {
         $checkouts = $this->getDatagridData(
             self::GRID_NAME,
@@ -107,12 +98,8 @@ class OrderControllerTest extends FrontendWebTestCase
 
     /**
      * @dataProvider totalFilterDataProvider
-     *
-     * @param float $value
-     * @param string $filterType
-     * @param array $expectedCheckouts
      */
-    public function testTotalFilter($value, $filterType, array $expectedCheckouts): void
+    public function testTotalFilter(float $value, int $filterType, array $expectedCheckouts): void
     {
         $checkouts = $this->getDatagridData(
             self::GRID_NAME,
@@ -148,16 +135,12 @@ class OrderControllerTest extends FrontendWebTestCase
         ];
     }
 
-    /**
-     * @param array|Checkout[] $checkoutReferences
-     * @return array
-     */
-    protected function getCheckoutsByReferences(array $checkoutReferences): array
+    private function getCheckoutsByReferences(array $checkoutReferences): array
     {
         $result = [];
         foreach ($checkoutReferences as $checkoutReference) {
             /** @var Checkout $checkout */
-            $checkout                   = $this->getReference($checkoutReference);
+            $checkout = $this->getReference($checkoutReference);
             $result[$checkout->getId()] = $checkout;
         }
 
@@ -177,13 +160,7 @@ class OrderControllerTest extends FrontendWebTestCase
         $this->checkSorting($checkouts, 'subtotal', OrmSorterExtension::DIRECTION_ASC);
     }
 
-    /**
-     * @param array  $checkouts
-     * @param string $column
-     * @param string $order
-     * @param bool   $stringSorting
-     */
-    protected function checkSorting(array $checkouts, $column, $order, $stringSorting = false): void
+    private function checkSorting(array $checkouts, string $column, string $order, $stringSorting = false): void
     {
         $lastValue = null;
         foreach ($checkouts as $checkout) {
@@ -202,13 +179,7 @@ class OrderControllerTest extends FrontendWebTestCase
         }
     }
 
-    /**
-     * @param string $gridName
-     * @param array  $filters
-     * @param array  $sorters
-     * @return array
-     */
-    protected function getDatagridData($gridName, array $filters = [], array $sorters = []): array
+    private function getDatagridData(string $gridName, array $filters = [], array $sorters = []): array
     {
         $result = [];
         foreach ($filters as $filter => $value) {
@@ -220,10 +191,10 @@ class OrderControllerTest extends FrontendWebTestCase
 
         $response = $this->client->requestFrontendGrid(['gridName' => $gridName], $result);
 
-        return json_decode($response->getContent(), true)['data'];
+        return self::jsonToArray($response->getContent())['data'];
     }
 
-    protected function prepareCheckouts(array $checkouts): array
+    private function prepareCheckouts(array $checkouts): array
     {
         $result = [];
         foreach ($checkouts as $checkout) {
@@ -233,11 +204,7 @@ class OrderControllerTest extends FrontendWebTestCase
         return $result;
     }
 
-    /**
-     * @param integer $checkoutId
-     * @return float
-     */
-    protected function getSubtotalValue($checkoutId): float
+    private function getSubtotalValue(string|int $checkoutId): float
     {
         $checkout = $this->getCheckoutById($checkoutId);
         if (0 === $checkout->getSubtotals()->count()) {
@@ -247,19 +214,13 @@ class OrderControllerTest extends FrontendWebTestCase
         return $checkout->getSubtotals()->first()->getSubtotal()->getAmount();
     }
 
-    /**
-     * @param int $checkoutId
-     * @return Checkout
-     */
-    protected function getCheckoutById($checkoutId): ?Checkout
+    private function getCheckoutById(string|int $checkoutId): ?Checkout
     {
-        if (empty($this->allCheckouts)) {
-            /** @var array|Checkout[] $checkouts */
+        if (null === $this->allCheckouts) {
+            /** @var Checkout[] $checkouts */
             $checkouts = $this->getContainer()->get('doctrine')
-                ->getManagerForClass('OroCheckoutBundle:Checkout')
-                ->getRepository('OroCheckoutBundle:Checkout')
+                ->getRepository(Checkout::class)
                 ->findAll();
-
             foreach ($checkouts as $checkout) {
                 $this->allCheckouts[$checkout->getId()] = $checkout;
             }
