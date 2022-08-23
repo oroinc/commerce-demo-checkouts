@@ -23,4 +23,11 @@ Perform the installation:
 
 ```
 php bin/console oro:platform:update --env=prod
+
+```
+Load the new workflow in database & the translations
+```
+php bin/console oro:workflow:definition:load --env=prod
+php bin/console oro:translation:load --env=prod
+
 ```
