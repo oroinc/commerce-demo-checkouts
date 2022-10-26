@@ -227,8 +227,6 @@ workflows:
                             shopping_list_limit: $.result.shoppingListLimit
                 init_routes:
                     - oro_product_frontend_quick_add
-                    - oro_product_frontend_quick_add_copy_paste
-                    - oro_product_frontend_quick_add_import
                 acl_resource: [CREATE, entity:commerce@Oro\Bundle\CheckoutBundle\Entity\Checkout]
 
             continue_to_billing_address:
