@@ -19,7 +19,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     public const CHECKOUT_2 = 'alternative.checkout.2';
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getData(): array
     {
@@ -39,7 +39,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getWorkflowName(): string
     {
@@ -47,7 +47,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function createCheckout(): Checkout
     {
@@ -55,7 +55,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     protected function getCheckoutSourceName(): string
     {
@@ -63,7 +63,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getDependencies(): array
     {
