@@ -2,6 +2,8 @@ The upgrade instructions are available at [Oro documentation website](https://do
 
 The current file describes significant changes in the code that may affect the upgrade of your customizations.
 
-## 4.2.0 (2020-01-29)
+## Changes in the Сommerce-Demo-Checkouts package versions
 
-OroAlternativeCheckoutBundle has been moved from oro/commerce package to oro/commerce-demo-checkouts package.
+### 4.2.0 (2020-01-29)
+
+OroAlternativeCheckoutBundle has been moved from the `oro/commerce` package to the `oro/commerce-demo-checkouts` package.
