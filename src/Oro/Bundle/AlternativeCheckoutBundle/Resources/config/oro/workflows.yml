@@ -1272,6 +1272,7 @@ workflows:
                             transactionOptions:
                                 failedShippingAddressUrl: $.result.failedShippingAddressUrl
                                 additionalData: $additional_data
+                                email: $email
                         results:
                             result.responseData: $.responseData
 
