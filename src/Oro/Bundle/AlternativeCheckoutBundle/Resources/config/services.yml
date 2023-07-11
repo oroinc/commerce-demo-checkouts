@@ -15,10 +15,6 @@ services:
         tags:
             - { name: layout.block_type_extension, alias: checkout_form_fields }
 
-    oro_alternativecheckout.event_listener.quantity_to_order_condition_listener:
-        parent: oro_inventory.event_listener.quantity_to_order_condition_listener
-        class: Oro\Bundle\AlternativeCheckoutBundle\EventListener\QuantityToOrderConditionListener
-
     oro_alternativecheckout.datagrid.extension.frontend_shopping_list_grid.abstract:
         abstract: true
         class: Oro\Bundle\CheckoutBundle\Datagrid\FrontendShoppingListGridExtension

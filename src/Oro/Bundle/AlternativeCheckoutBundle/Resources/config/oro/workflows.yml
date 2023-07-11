@@ -833,16 +833,6 @@ workflows:
                         results:
                             result.orderLineItemsNotEmpty: $.orderLineItemsNotEmpty
                             result.orderLineItemsNotEmptyForRfp: $.orderLineItemsNotEmptyForRfp
-                    - '@tree':
-                        conditions:
-                            '@blank': $.result.extendableConditionCheckout
-                        actions:
-                            - '@assign_value': [$.result.extendableConditionCheckout, false]
-                            - '@assign_value':
-                                conditions:
-                                    '@extendable':
-                                        events: [extendable_condition.checkout]
-                                parameters: [$.result.extendableConditionCheckout, true]
 
                 preconditions:
                     '@and':
@@ -854,7 +844,6 @@ workflows:
                             parameters: [$.result.orderLineItemsNotEmpty, true]
                             message: oro.checkout.workflow.condition.order_line_items_not_empty.allow_rfp.message
                         - '@quote_acceptable': [$checkout.sourceEntity, true]
-                        - '@equal': [$.result.extendableConditionCheckout, true]
 
                 conditions:
                     '@and':
@@ -1144,6 +1133,13 @@ workflows:
 
             place_order_definition:
                 preactions:
+                    - '@run_action_group':
+                          action_group: order_line_items_not_empty
+                          parameters_mapping:
+                              checkout: $checkout
+                          results:
+                              result.orderLineItemsNotEmpty: $.orderLineItemsNotEmpty
+                              result.orderLineItemsNotEmptyForRfp: $.orderLineItemsNotEmptyForRfp
                     - '@flash_message':
                         conditions:
                             '@and':
@@ -1185,16 +1181,6 @@ workflows:
                                 parameters: [$.result.paymentMethodApplicable, true]
                     - '@tree':
                         conditions:
-                            '@blank': $.result.extendableConditionCheckout
-                        actions:
-                            - '@assign_value': [$.result.extendableConditionCheckout, false]
-                            - '@assign_value':
-                                conditions:
-                                    '@extendable':
-                                        events: ['extendable_condition.checkout']
-                                parameters: [$.result.extendableConditionCheckout, true]
-                    - '@tree':
-                        conditions:
                             '@blank': $.result.extendableConditionPreOrderCreate
                         actions:
                             - '@assign_value': [$.result.extendableConditionPreOrderCreate, false]
@@ -1215,6 +1201,13 @@ workflows:
 
                 preconditions:
                     '@and':
+                        - '@equal': [$checkout.completed, false]
+                        - '@equal':
+                              parameters: [$.result.orderLineItemsNotEmptyForRfp, true]
+                              message: oro.checkout.workflow.condition.order_line_items_not_empty.not_allow_rfp.message
+                        - '@equal':
+                              parameters: [$.result.orderLineItemsNotEmpty, true]
+                              message: oro.checkout.workflow.condition.order_line_items_not_empty.allow_rfp.message
                         - '@not_empty': $.result.paymentContext
                         - '@equal':
                             parameters: [$.result.shippingMethodHasEnabledShippingRules, true]
@@ -1229,7 +1222,6 @@ workflows:
                                 - '@equal': [$.result.lessOrderTotalLimit, true]
                                 - '@equal': [$allowed, true]
                                 - '@acl_granted': 'oro_alternativecheckout_checkout_approve'
-                        - '@equal': [$.result.extendableConditionCheckout, true]
                         - '@equal': [$.result.extendableConditionPreOrderCreate, true]
 
                 conditions:
