@@ -4,6 +4,11 @@ The current file describes significant changes in the code that may affect the u
 
 ## Changes in the Сommerce-Demo-Checkouts package versions
 
+### UNRELEASED
+
+#### Removed
+* Deprecated `Oro\Bundle\AlternativeCheckoutBundle\EventListener\QuantityToOrderConditionListener`. Will be moved to the validation.yml config instead.
+
 ### 4.2.0 (2020-01-29)
 
 OroAlternativeCheckoutBundle has been moved from the `oro/commerce` package to the `oro/commerce-demo-checkouts` package.
