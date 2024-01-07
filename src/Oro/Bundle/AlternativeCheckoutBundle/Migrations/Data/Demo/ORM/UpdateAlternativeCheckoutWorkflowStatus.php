@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
- * Aсtivates the alternative checkout workflow.
+ * Activates the alternative checkout workflow.
  */
 class UpdateAlternativeCheckoutWorkflowStatus extends AbstractFixture implements
     DependentFixtureInterface,
@@ -22,7 +22,7 @@ class UpdateAlternativeCheckoutWorkflowStatus extends AbstractFixture implements
     use ContainerAwareTrait;
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function getDependencies(): array
     {
@@ -30,18 +30,18 @@ class UpdateAlternativeCheckoutWorkflowStatus extends AbstractFixture implements
     }
 
     /**
-     * {@inheritdoc}
+     * {@inheritDoc}
      */
     public function load(ObjectManager $manager): void
     {
         /** @var WorkflowDefinition $workflowDefinition */
         $workflowDefinition = $manager->getRepository(WorkflowDefinition::class)
             ->find('b2b_flow_alternative_checkout');
-
         if (!$workflowDefinition) {
             return;
         }
 
-        $this->container->get('oro_workflow.manager.system')->activateWorkflow($workflowDefinition->getName());
+        $this->container->get('oro_workflow.manager.system')
+            ->activateWorkflow($workflowDefinition->getName());
     }
 }
