@@ -35,7 +35,7 @@ class UpdateAlternativeCheckoutWorkflowStatus extends AbstractFixture implements
     public function load(ObjectManager $manager): void
     {
         /** @var WorkflowDefinition $workflowDefinition */
-        $workflowDefinition = $manager->getRepository('OroWorkflowBundle:WorkflowDefinition')
+        $workflowDefinition = $manager->getRepository(WorkflowDefinition::class)
             ->find('b2b_flow_alternative_checkout');
 
         if (!$workflowDefinition) {
