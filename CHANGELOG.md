@@ -4,7 +4,8 @@ The current file describes significant changes in the code that may affect the u
 
 ## Changes in the Сommerce-Demo-Checkouts package versions
 
-### UNRELEASED
+### 6.0.0-BETA (2024-01-08)
+[Show detailed list of changes](incompatibilities-6-0-beta.md)
 
 #### Removed
 * Removed `Oro\Bundle\AlternativeCheckoutBundle\EventListener\QuantityToOrderConditionListener`,
