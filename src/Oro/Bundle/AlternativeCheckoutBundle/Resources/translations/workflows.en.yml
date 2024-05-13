@@ -21,6 +21,8 @@ oro:
                     label: 'Order Approval'
                 order_created:
                     label: 'Order Created'
+                enter_credentials_step:
+                    label: 'Enter Credentials'
             variable:
                 order_approval_threshold:
                     label: 'Order Approval Threshold'
@@ -28,8 +30,6 @@ oro:
             attribute:
                 additional_data:
                     label: 'Additional Data'
-                request_approval_notes:
-                    label: Notes
                 billing_address_has_shipping:
                     label: 'If billing address also shipping'
                 allow_manual_source_remove:
@@ -50,14 +50,16 @@ oro:
                     label: 'Label for remove source'
                 edit_order_link:
                     label: 'Edit Order Link'
-                allowed:
-                    label: 'Is checkout approved'
-                allow_request_date:
-                    label: 'Data of approving'
-                requested_for_approve:
-                    label: 'Is requested for approve'
-                state_token:
-                    label: 'Token to track checkout state'
+                user_input:
+                    label: 'User Input'
+                payment_in_progress:
+                    label: 'Flag indicates that payment is in progress'
+                payment_validate:
+                    label: 'Payment validation required'
+                payment_save_for_later:
+                    label: 'Save payment data for later use'
+                order:
+                    label: 'Instance of Order entity'
                 save_billing_address:
                     label: 'Save Billing Address'
                 save_shipping_address:
@@ -76,24 +78,36 @@ oro:
                     label: 'Shipping method'
                 shipping_method_type:
                     label: 'Shipping method type'
-                order:
-                    label: 'Order'
                 billing_address:
                     label: 'Billing address'
                 shipping_address:
                     label: 'Shipping address'
-                payment_in_progress:
-                    label: 'Flag indicates that payment is in progress'
-                payment_validate:
-                    label: 'Payment validation required'
-                payment_save_for_later:
-                    label: 'Save payment data for later use'
+                visitor:
+                    label: 'Visitor'
                 email:
                     label: 'Email'
+                late_registration:
+                    label: 'Late Registration Enabled'
                 customer_consents:
                     label: 'Customer consents'
                 consents_available:
                     label: 'Is consents available'
+                line_items_shipping_methods:
+                    label: 'Line items shipping methods'
+                line_item_groups_shipping_methods:
+                    label: 'Line item groups shipping methods'
+                grouped_line_items:
+                    label: 'Grouped line items'
+                shipping_data_ready:
+                    label: 'Shipping data is ready'
+                request_approval_notes:
+                    label: Notes
+                allowed:
+                    label: 'Is checkout approved'
+                allow_request_date:
+                    label: 'Data of approving'
+                requested_for_approve:
+                    label: 'Is requested for approve'
             transition:
                 __start__:
                     label: 'Create Order'
@@ -245,3 +259,20 @@ oro:
                 back_to_shipping_address_on_fail_address:
                     label: 'Edit Shipping Information'
                     warning_message: ''
+                paid_partially:
+                    label: 'Paid partially'
+                start_from_quote:
+                    label: 'Start Checkout From Quote'
+                    button_label: 'Create Order'
+                    button_title: ''
+                    warning_message: ''
+                back_to_enter_credentials:
+                    label: 'Back to Enter Credentials'
+                    warning_message: ''
+                start_from_quote_as_guest:
+                    label: 'Start Checkout From Quote As Guest'
+                    button_label: 'Create Order'
+                    button_title: ''
+                    warning_message: ''
+                continue_to_billing_address_as_guest:
+                    label: 'Continue'
