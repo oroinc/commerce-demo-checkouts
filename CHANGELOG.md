@@ -2,7 +2,7 @@ The upgrade instructions are available at [Oro documentation website](https://do
 
 The current file describes significant changes in the code that may affect the upgrade of your customizations.
 
-## Changes in the Сommerce-Demo-Checkouts package versions
+## Changes in the Commerce-Demo-Checkouts package versions
 
 ### 6.0.0-RC (2024-02-29)
 
