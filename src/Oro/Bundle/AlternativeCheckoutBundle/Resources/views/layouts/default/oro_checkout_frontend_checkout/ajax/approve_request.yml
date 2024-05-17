@@ -16,43 +16,15 @@ layout:
                 options:
                     payment_method: '=data["checkout"].getPaymentMethod()'
 
-        - '@addTree':
-            items:
-                checkout_button_continue_right:
-                    blockType: checkout_transition_continue
-                    options:
-                        transitionData: '=data["oro_checkout_transition"].getContinueTransition(data["workflowItem"])'
-                        checkout: '=data["checkout"]'
-                checkout_button_back_right:
-                    blockType: checkout_transition_back
-                    options:
-                        transitionData: '=data["oro_checkout_transition"].getBackTransition(data["workflowItem"])'
-                        checkout: '=data["checkout"]'
-                        attr:
-                            class: ' checkout-form__back--offset-bottom'
-            tree:
-                checkout_form_buttons:
-                    checkout_button_back_right: ~
-                    checkout_button_continue_right: ~
-
-        - '@move':
-            id: checkout_order_summary_content
-            parentId: checkout_form_fields
-            prepend: true
-
-        - '@move':
-            id: checkout_form_buttons
-            parentId: checkout_order_footer_col_first
-            prepend: true
-
-        - '@move':
-            id: checkout_order_footer
-            parentId: checkout_form_fields
-            siblingId: checkout_additional_options
+        - '@setOption':
+            id: checkout_outside_submit_order_button
+            optionName: finalTransitionData
+            optionValue: '=data["oro_checkout_transition"].getContinueTransition(data["workflowItem"], "approve_order")'
 
         - '@remove':
             id: checkout_button_continue
+
         - '@remove':
-            id: checkout_button_back
+            id: checkout_outside_button_continue
 
     conditions: 'context["workflowStepName"]=="approve_request" && context["workflowName"]=="b2b_flow_alternative_checkout"'
