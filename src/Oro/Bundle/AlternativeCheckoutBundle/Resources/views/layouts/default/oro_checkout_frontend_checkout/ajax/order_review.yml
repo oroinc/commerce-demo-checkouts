@@ -1,0 +1,13 @@
+layout:
+    actions:
+        - '@setOption':
+            id: checkout_button_continue
+            optionName: visible
+            optionValue: true
+
+        - '@setOption':
+            id: checkout_outside_button_continue
+            optionName: visible
+            optionValue: true
+
+    conditions: 'context["workflowStepName"]=="order_review" && context["workflowName"]=="b2b_flow_alternative_checkout"'
