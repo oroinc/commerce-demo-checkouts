@@ -10,9 +10,9 @@ Feature: Alternative Checkout workflow threshold
   I want to start and request approval of alternative checkout
 
   Scenario: Create different window session
-      Given sessions active:
-        | User  |first_session |
-        | Admin |second_session|
+    Given sessions active:
+      | User  | first_session  |
+      | Admin | second_session |
 
   Scenario: Activate Alternative Checkout workflow
     Given I proceed as the Admin
@@ -37,7 +37,7 @@ Feature: Alternative Checkout workflow threshold
     And I fill "Checkout Order Review Form" with:
       | PO Number              | TEST_PO_NUMBER     |
       | Notes                  | Customer test note |
-      | Do not ship later than | 7/1/2018             |
+      | Do not ship later than | 7/1/2018           |
     And I click on empty space
     And I check "Delete this shopping list after submitting order" on the "Order Review" checkout step and press Request Approval
     Then I should see "You exceeded the allowable amount of $5000."
@@ -56,9 +56,9 @@ Feature: Alternative Checkout workflow threshold
     And click "Submit Order"
     And I see the "Thank You" page with "Thank You For Your Purchase!" title
     And Email should contains the following:
-      | Body | PO Number: TEST_PO_NUMBER           |
-      | Body | Do Not Ship Later Than: 7/1/2018      |
-      | Body | Notes: Customer test note           |
+      | Body | PO Number TEST_PO_NUMBER |
+      | Body | Ship by 7/1/2018         |
+      | Body | Notes Customer test note |
 
   Scenario: Check created order
     Given I proceed as the Admin
