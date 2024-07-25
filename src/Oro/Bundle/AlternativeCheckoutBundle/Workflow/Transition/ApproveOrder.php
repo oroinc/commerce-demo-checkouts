@@ -8,6 +8,9 @@ use Oro\Bundle\CheckoutBundle\Entity\Checkout;
 use Oro\Bundle\WorkflowBundle\Entity\WorkflowItem;
 use Oro\Bundle\WorkflowBundle\Model\TransitionServiceAbstract;
 
+/**
+ * AlternativeCheckout approve_order transition logic implementation.
+ */
 class ApproveOrder extends TransitionServiceAbstract
 {
     public function __construct(

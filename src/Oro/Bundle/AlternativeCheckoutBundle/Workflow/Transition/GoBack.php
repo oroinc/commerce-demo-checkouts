@@ -7,6 +7,9 @@ use Oro\Bundle\CheckoutBundle\Workflow\ActionGroup\UpdateShippingPriceInterface;
 use Oro\Bundle\WorkflowBundle\Entity\WorkflowItem;
 use Oro\Bundle\WorkflowBundle\Model\TransitionServiceAbstract;
 
+/**
+ * AlternativeCheckout go_back transition logic implementation.
+ */
 class GoBack extends TransitionServiceAbstract
 {
     public function __construct(

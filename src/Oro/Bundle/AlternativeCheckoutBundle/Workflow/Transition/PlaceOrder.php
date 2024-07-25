@@ -8,6 +8,9 @@ use Oro\Bundle\CheckoutBundle\Entity\Checkout;
 use Oro\Bundle\WorkflowBundle\Entity\WorkflowItem;
 use Oro\Bundle\WorkflowBundle\Model\TransitionServiceInterface;
 
+/**
+ * AlternativeCheckout place_order transition logic implementation.
+ */
 class PlaceOrder implements TransitionServiceInterface
 {
     public function __construct(
