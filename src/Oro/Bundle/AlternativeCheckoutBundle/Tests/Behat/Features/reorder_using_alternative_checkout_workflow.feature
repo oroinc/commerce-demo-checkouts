@@ -75,6 +75,9 @@ Feature: Re-order using Alternative Checkout workflow
   Scenario: Check created orders
     Given I proceed as the Admin
     When I go to Sales / Orders
+    And I show column Payment Method in grid
+    And I show column Shipping Method in grid
+    And I show column Payment Term in grid
     Then I should see following grid:
       | Order Number | Total     | Payment Method   | Shipping Method | Payment Term |
       | 4            | $3,459.00 | Payment Term Two | Flat Rate Two   | net 90       |

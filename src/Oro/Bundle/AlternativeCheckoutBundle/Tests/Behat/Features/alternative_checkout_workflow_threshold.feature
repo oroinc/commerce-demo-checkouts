@@ -63,7 +63,7 @@ Feature: Alternative Checkout workflow threshold
   Scenario: Check created order
     Given I proceed as the Admin
     When I go to Sales/ Orders
-    And I filter PO Number as is equal to "TEST_PO_NUMBER"
+    And I show column PO Number in grid
     And click View TEST_PO_NUMBER in grid
     Then I should see Quote with:
       | PO Number              | TEST_PO_NUMBER     |
