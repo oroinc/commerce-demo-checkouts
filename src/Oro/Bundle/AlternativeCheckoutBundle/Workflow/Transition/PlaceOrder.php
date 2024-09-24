@@ -19,6 +19,7 @@ class PlaceOrder implements TransitionServiceInterface
     ) {
     }
 
+    #[\Override]
     public function isPreConditionAllowed(WorkflowItem $workflowItem, Collection $errors = null): bool
     {
         /** @var Checkout $checkout */
@@ -49,6 +50,7 @@ class PlaceOrder implements TransitionServiceInterface
         return true;
     }
 
+    #[\Override]
     public function isConditionAllowed(WorkflowItem $workflowItem, Collection $errors = null): bool
     {
         if (!$this->basePlaceOrder->isPreConditionAllowed($workflowItem, $errors)) {
@@ -58,6 +60,7 @@ class PlaceOrder implements TransitionServiceInterface
         return true;
     }
 
+    #[\Override]
     public function execute(WorkflowItem $workflowItem): void
     {
         $this->basePlaceOrder->execute($workflowItem);

@@ -12,9 +12,7 @@ class LoadQuoteAlternativeCheckoutsSubtotalsData extends LoadCheckoutSubtotals
     public const ALTERNATIVE_CHECKOUT_SUBTOTAL_1 = 'alternative.checkout.subtotal.1';
     public const ALTERNATIVE_CHECKOUT_SUBTOTAL_2 = 'alternative.checkout.subtotal.2';
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function load(ObjectManager $manager): void
     {
         static::$data = array_merge(
@@ -38,9 +36,7 @@ class LoadQuoteAlternativeCheckoutsSubtotalsData extends LoadCheckoutSubtotals
         parent::load($manager);
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function getDependencies(): array
     {
         return array_merge(

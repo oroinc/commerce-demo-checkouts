@@ -18,6 +18,7 @@ class ContinueToRequestApproval extends TransitionServiceAbstract
     ) {
     }
 
+    #[\Override]
     public function isPreConditionAllowed(WorkflowItem $workflowItem, Collection $errors = null): bool
     {
         /** @var Checkout $checkout */

@@ -26,6 +26,7 @@ class OrderControllerTest extends FrontendWebTestCase
     /** @var Checkout[]|null */
     private ?array $allCheckouts = null;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->initClient(

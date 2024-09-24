@@ -19,9 +19,7 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
     public const CHECKOUT_1 = 'alternative.checkout.1';
     public const CHECKOUT_2 = 'alternative.checkout.2';
 
-    /**
-     * {@inheritDoc}
-     */
+    #[\Override]
     protected function getData(): array
     {
         $paymentMethodIdentifier = $this->getPaymentMethodIdentifier($this->container);
@@ -39,33 +37,25 @@ class LoadQuoteAlternativeCheckoutsData extends AbstractLoadCheckouts
         ];
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    #[\Override]
     protected function getWorkflowName(): string
     {
         return 'b2b_flow_alternative_checkout';
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    #[\Override]
     protected function createCheckout(): Checkout
     {
         return new Checkout();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    #[\Override]
     protected function getCheckoutSourceName(): string
     {
         return 'quoteDemand';
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    #[\Override]
     public function getDependencies(): array
     {
         return array_merge(

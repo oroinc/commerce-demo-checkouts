@@ -9,6 +9,7 @@ use Oro\Bundle\CheckoutBundle\Tests\Functional\Controller\WorkflowDefinitionChec
 
 class WorkflowDefinitionControllerTest extends BaseTest
 {
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();

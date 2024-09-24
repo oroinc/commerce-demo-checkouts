@@ -18,6 +18,7 @@ class ApproveOrder extends TransitionServiceAbstract
     ) {
     }
 
+    #[\Override]
     public function isPreConditionAllowed(WorkflowItem $workflowItem, Collection $errors = null): bool
     {
         /** @var Checkout $checkout */
@@ -49,6 +50,7 @@ class ApproveOrder extends TransitionServiceAbstract
         return true;
     }
 
+    #[\Override]
     public function execute(WorkflowItem $workflowItem): void
     {
         $data = $workflowItem->getData();
