@@ -75,9 +75,8 @@ Feature: Alternative checkout with consents
 
   Scenario: Admin selects consents to be enabled on Frontstore
     Given go to System/ Configuration
-    And follow "Commerce/Customer/Consents" on configuration sidebar
-    And fill "Consent Settings Form" with:
-      | Enabled User Consents Use Default | false|
+    And follow "Commerce/Customer/Interactions" on configuration sidebar
+    And I uncheck "Use default" for "Enabled user consents" field
     And click "Add Consent"
     And I choose Consent "Email Newsletters" in 1 row
     And click "Add Consent"
@@ -127,7 +126,7 @@ Feature: Alternative checkout with consents
     When save and close form
     Then I should see "Consent has been created" flash message
     And go to System/ Configuration
-    And follow "Commerce/Customer/Consents" on configuration sidebar
+    And follow "Commerce/Customer/Interactions" on configuration sidebar
     And click "Add Consent"
     And I choose Consent "Test Consent" in 4 row
     When click "Save settings"
