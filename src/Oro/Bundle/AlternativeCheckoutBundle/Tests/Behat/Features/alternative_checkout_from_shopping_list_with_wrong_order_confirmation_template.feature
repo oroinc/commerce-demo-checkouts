@@ -2,7 +2,7 @@
 @ticket-BB-16109
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 
 Feature: Alternative Checkout From Shopping List With Wrong Order Confirmation Template
   In order to create order from Shopping List on front store

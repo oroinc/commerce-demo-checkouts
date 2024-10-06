@@ -2,8 +2,7 @@
 @ticket-BB-11388
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
-@fixture-OroWarehouseBundle:Checkout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 
 Feature: Alternative Checkout With Ship To Billing Address (EE)
   In order to create order on front store
@@ -24,8 +23,6 @@ Feature: Alternative Checkout With Ship To Billing Address (EE)
 
   Scenario: Create order
     Given I proceed as the Frontend Buyer
-    And There is EUR currency in the system configuration
-    And I enable the existing warehouses
     And MarleneSBradley@example.org customer user has Buyer role
     And I signed in as MarleneSBradley@example.org on the store frontend
     When I open page with shopping list List Threshold

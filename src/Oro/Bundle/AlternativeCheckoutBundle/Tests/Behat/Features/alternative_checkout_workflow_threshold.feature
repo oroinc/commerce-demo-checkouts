@@ -2,8 +2,7 @@
 @ticket-BB-12063
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
-@fixture-OroWarehouseBundle:Checkout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 Feature: Alternative Checkout workflow threshold
   In order to create order on front store
   As a buyer
@@ -24,8 +23,6 @@ Feature: Alternative Checkout workflow threshold
 
   Scenario: Start checkout with Alternative Checkout with threshold
     Given I proceed as the User
-    And There is EUR currency in the system configuration
-    And I enable the existing warehouses
     And MarleneSBradley@example.org customer user has Buyer role
     And I signed in as MarleneSBradley@example.org on the store frontend
     When I open page with shopping list List Threshold

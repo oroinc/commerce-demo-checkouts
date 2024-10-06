@@ -4,8 +4,7 @@
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
 @fixture-OroProductBundle:gdpr_refactor.yml
 @fixture-OroConsentBundle:ConsentLandingPagesFixture.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
-@fixture-OroWarehouseBundle:Checkout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 Feature: Alternative checkout with consents
   In order to accept consents on alternative checkout
   As an Frontend User
@@ -88,7 +87,6 @@ Feature: Alternative checkout with consents
 
   Scenario: Check mandatory consents on Checkout Page
     Given I proceed as the User
-    And I enable the existing warehouses
     And MarleneSBradley@example.org customer user has Buyer role
     And I signed in as MarleneSBradley@example.org on the store frontend
     And I open page with shopping list List Threshold
