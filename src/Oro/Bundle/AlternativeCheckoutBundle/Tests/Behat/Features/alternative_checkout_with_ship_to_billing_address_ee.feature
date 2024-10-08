@@ -33,8 +33,8 @@ Feature: Alternative Checkout With Ship To Billing Address (EE)
     And I check "Ship to this address" on the checkout page
     And I select "Fifth avenue, 10115 Berlin, Germany" on the "Billing Information" checkout step and press Continue
     And I click on "Edit Billing Information"
-    And I select "New address" from "Select Billing Address"
-    And I fill "Billing Information" with:
+    And I click "Add Address"
+    And I fill "New Address Popup Form" with:
       | Label        | Billing address 1 |
       | Organization | ORO               |
       | Street       | Billing street 1  |
@@ -42,6 +42,9 @@ Feature: Alternative Checkout With Ship To Billing Address (EE)
       | Country      | Germany           |
       | State        | Hamburg           |
       | Postal Code  | 10115             |
+    And I click "Continue" in modal window
+    # TODO remove next line after backend fix
+    And I click "Continue"
     And I click "Continue"
     And I check "Flat Rate" on the "Shipping Method" checkout step and press Continue
     And I check "Payment Terms" on the "Payment" checkout step and press Continue
