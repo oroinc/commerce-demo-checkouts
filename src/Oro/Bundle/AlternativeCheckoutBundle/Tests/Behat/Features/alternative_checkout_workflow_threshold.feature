@@ -63,6 +63,6 @@ Feature: Alternative Checkout workflow threshold
     And I show column PO Number in grid
     And click View TEST_PO_NUMBER in grid
     Then I should see Quote with:
-      | PO Number              | TEST_PO_NUMBER     |
-      | Do Not Ship Later Than | Jul 1, 2018        |
-      | Customer Notes         | Customer test note |
+      | PO Number       | TEST_PO_NUMBER     |
+      | Ship By         | Jul 1, 2018        |
+      | Customer Notes  | Customer test note |
