@@ -16,15 +16,4 @@ layout:
                 options:
                     payment_method: '=data["checkout"].getPaymentMethod()'
 
-        - '@setOption':
-            id: checkout_outside_submit_order_button
-            optionName: finalTransitionData
-            optionValue: '=data["oro_checkout_transition"].getContinueTransition(data["workflowItem"], "approve_order")'
-
-        - '@remove':
-            id: checkout_button_continue
-
-        - '@remove':
-            id: checkout_outside_button_continue
-
     conditions: 'context["workflowStepName"]=="approve_request" && context["workflowName"]=="b2b_flow_alternative_checkout"'
