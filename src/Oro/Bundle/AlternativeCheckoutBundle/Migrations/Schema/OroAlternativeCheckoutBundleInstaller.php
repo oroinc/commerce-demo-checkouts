@@ -10,17 +10,13 @@ use Oro\Bundle\MigrationBundle\Migration\QueryBag;
 
 class OroAlternativeCheckoutBundleInstaller implements Installation
 {
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function getMigrationVersion(): string
     {
         return 'v1_4';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function up(Schema $schema, QueryBag $queries): void
     {
     }

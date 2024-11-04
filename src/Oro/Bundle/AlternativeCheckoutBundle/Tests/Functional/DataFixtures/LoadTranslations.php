@@ -8,9 +8,7 @@ use Oro\Bundle\CheckoutBundle\Tests\Functional\DataFixtures\LoadTranslations as 
 
 class LoadTranslations extends BaseLoadTranslations
 {
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     protected static function getTranslationPath(): string
     {
         return __DIR__ . '/../../../Resources/translations/workflows.en.yml';

@@ -4,8 +4,7 @@
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
 @fixture-OroProductBundle:gdpr_refactor.yml
 @fixture-OroConsentBundle:ConsentLandingPagesFixture.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
-@fixture-OroWarehouseBundle:Checkout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 Feature: Alternative checkout with consents
   In order to accept consents on alternative checkout
   As an Frontend User
@@ -75,9 +74,8 @@ Feature: Alternative checkout with consents
 
   Scenario: Admin selects consents to be enabled on Frontstore
     Given go to System/ Configuration
-    And follow "Commerce/Customer/Consents" on configuration sidebar
-    And fill "Consent Settings Form" with:
-      | Enabled User Consents Use Default | false|
+    And follow "Commerce/Customer/Interactions" on configuration sidebar
+    And I uncheck "Use default" for "Enabled user consents" field
     And click "Add Consent"
     And I choose Consent "Email Newsletters" in 1 row
     And click "Add Consent"
@@ -89,7 +87,6 @@ Feature: Alternative checkout with consents
 
   Scenario: Check mandatory consents on Checkout Page
     Given I proceed as the User
-    And I enable the existing warehouses
     And MarleneSBradley@example.org customer user has Buyer role
     And I signed in as MarleneSBradley@example.org on the store frontend
     And I open page with shopping list List Threshold
@@ -127,7 +124,7 @@ Feature: Alternative checkout with consents
     When save and close form
     Then I should see "Consent has been created" flash message
     And go to System/ Configuration
-    And follow "Commerce/Customer/Consents" on configuration sidebar
+    And follow "Commerce/Customer/Interactions" on configuration sidebar
     And click "Add Consent"
     And I choose Consent "Test Consent" in 4 row
     When click "Save settings"

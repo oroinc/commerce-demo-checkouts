@@ -3,7 +3,7 @@
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
 @fixture-OroConsentBundle:ConsentLandingPagesFixture.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 Feature: Alternative Checkout with removed consents
   In order to accept consents on Alternative Checkout
   As an Storefront User
@@ -56,9 +56,8 @@ Feature: Alternative Checkout with removed consents
 
   Scenario: Admin selects consents to be enabled on Storefront
     Given I go to System/ Configuration
-    And follow "Commerce/Customer/Consents" on configuration sidebar
-    And fill "Consent Settings Form" with:
-      | Enabled User Consents Use Default | false|
+    And follow "Commerce/Customer/Interactions" on configuration sidebar
+    And I uncheck "Use default" for "Enabled user consents" field
     And click "Add Consent"
     And I choose Consent "Email Newsletters" in 1 row
     And click "Add Consent"

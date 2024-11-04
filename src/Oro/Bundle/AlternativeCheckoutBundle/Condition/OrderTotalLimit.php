@@ -30,17 +30,13 @@ class OrderTotalLimit extends AbstractComparison
         $this->checkoutLineItemsManager = $checkoutLineItemsManager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     public function getName(): string
     {
         return 'less_order_total_limit';
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     protected function isConditionAllowed($context): bool
     {
         return $this->doCompare(
@@ -49,9 +45,7 @@ class OrderTotalLimit extends AbstractComparison
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
+    #[\Override]
     protected function doCompare($left, $right): bool
     {
         $orderLineItems = $this->checkoutLineItemsManager->getData($left);
