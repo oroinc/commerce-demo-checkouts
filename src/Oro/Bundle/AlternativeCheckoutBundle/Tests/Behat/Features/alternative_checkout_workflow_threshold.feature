@@ -36,7 +36,7 @@ Feature: Alternative Checkout workflow threshold
       | Notes                  | Customer test note |
       | Do not ship later than | 7/1/2018           |
     And I click on empty space
-    And I check "Delete this shopping list after submitting order" on the "Order Review" checkout step and press Request Approval
+    And I check "Delete this shopping list after ordering" on the "Order Review" checkout step and press Request Approval
     Then I should see "You exceeded the allowable amount of $5000."
     When I click "Request Approval"
     Then I should see "Pending approval"

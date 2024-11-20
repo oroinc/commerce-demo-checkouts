@@ -44,7 +44,7 @@ Feature: Alternative Checkout With Ship To Billing Address (EE)
     And I scroll to top
     And I check "Flat Rate" on the "Shipping Method" checkout step and press Continue
     And I check "Payment Terms" on the "Payment" checkout step and press Continue
-    And I check "Delete this shopping list after submitting order" on the "Order Review" checkout step and press Request Approval
+    And I check "Delete this shopping list after ordering" on the "Order Review" checkout step and press Request Approval
     Then I should see "You exceeded the allowable amount of $5000."
     When I click "Request Approval"
     Then I should see "Pending approval"
