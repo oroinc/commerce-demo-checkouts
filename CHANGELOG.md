@@ -4,6 +4,15 @@ The current file describes significant changes in the code that may affect the u
 
 ## Changes in the Commerce-Demo-Checkouts package versions
 
+### UNRELEASED
+
+#### Changed
+
+##### Alternative Checkout workflow
+
+* Reworked an alternative checkout to contain only addition to the default multistep checkout, transition definitions were moved to services, import used to not copy-paste base workflow config (should simplify updates and receive all functionalities of base flow)
+* Moved all alternative-checkout tests to demo checkouts bundle
+
 ### 6.0.0-RC (2024-02-29)
 
 #### Removed
