@@ -38,3 +38,39 @@ services:
             - '250'
         tags:
             - { name: oro_datagrid.extension }
+
+    oro_alternativecheckout.workflow.transition.go_back:
+        class: Oro\Bundle\AlternativeCheckoutBundle\Workflow\Transition\GoBack
+        arguments:
+            - '@oro_checkout.action_group.update_shipping_price'
+        tags:
+            - { name: oro_workflow.transition_service }
+
+    oro_alternativecheckout.workflow.transition.continue_to_request_approval:
+        class: Oro\Bundle\AlternativeCheckoutBundle\Workflow\Transition\ContinueToRequestApproval
+        arguments:
+            - '@oro_action.action_executor'
+        tags:
+            - { name: oro_workflow.transition_service }
+
+    oro_alternativecheckout.workflow.transition.approve_order:
+        class: Oro\Bundle\AlternativeCheckoutBundle\Workflow\Transition\ApproveOrder
+        arguments:
+            - '@oro_action.action_executor'
+        tags:
+            - { name: oro_workflow.transition_service }
+
+    oro_alternativecheckout.workflow.transition.request_for_approve_order:
+        class: Oro\Bundle\AlternativeCheckoutBundle\Workflow\Transition\RequestForApproveOrder
+        arguments:
+            - '@oro_action.action_executor'
+        tags:
+            - { name: oro_workflow.transition_service }
+
+    oro_alternativecheckout.workflow.transition.place_order:
+        class: Oro\Bundle\AlternativeCheckoutBundle\Workflow\Transition\PlaceOrder
+        arguments:
+            - '@oro_checkout.workflow.b2b_flow_checkout.transition.place_order'
+            - '@oro_action.action_executor'
+        tags:
+            - { name: oro_workflow.transition_service }
