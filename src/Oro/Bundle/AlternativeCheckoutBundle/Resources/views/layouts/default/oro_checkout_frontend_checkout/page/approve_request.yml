@@ -16,4 +16,14 @@ layout:
                 options:
                     payment_method: '=data["checkout"].getPaymentMethod()'
 
+        - '@setOption':
+            id: checkout_order_summary_totals_main
+            optionName: open
+            optionValue: true
+
+        - '@setOption':
+            id: checkout_order_summary_line_items_collapse_container
+            optionName: vars.open
+            optionValue: true
+
     conditions: 'context["workflowStepName"]=="approve_request" && context["workflowName"]=="b2b_flow_alternative_checkout" && !context["widget_container"]'
