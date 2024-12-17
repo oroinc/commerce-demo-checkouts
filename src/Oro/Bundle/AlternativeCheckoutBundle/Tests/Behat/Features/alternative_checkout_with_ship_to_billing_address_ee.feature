@@ -39,7 +39,7 @@ Feature: Alternative Checkout With Ship To Billing Address (EE)
       | Country      | Germany           |
       | State        | Hamburg           |
       | Postal Code  | 10115             |
-    And I click "Continue" in modal window
+    And I click "Add Address" in modal window
     And I click "Continue"
     And I scroll to top
     And I check "Flat Rate" on the "Shipping Method" checkout step and press Continue
