@@ -14,55 +14,46 @@ use Oro\Bundle\TestFrameworkBundle\Test\WebTestCase;
 
 class CheckoutRepositoryTest extends WebTestCase
 {
+    private CheckoutRepository $repository;
+
     #[\Override]
     protected function setUp(): void
     {
         $this->initClient();
-        $this->loadFixtures(
-            [
-                LoadQuoteAlternativeCheckoutsData::class,
-                BaseLoadQuoteCheckoutsData::class,
-                LoadCustomerUserData::class,
-            ]
-        );
-    }
-
-    protected function getRepository(): CheckoutRepository
-    {
-        return $this->getContainer()->get('doctrine')->getRepository(Checkout::class);
+        $this->loadFixtures([
+            LoadQuoteAlternativeCheckoutsData::class,
+            BaseLoadQuoteCheckoutsData::class,
+            LoadCustomerUserData::class
+        ]);
+        $this->repository = self::getContainer()->get('doctrine')->getRepository(Checkout::class);
     }
 
     /**
-     * @param string $checkout
-     * @param string $workflowName
      * @dataProvider findCheckoutByCustomerUserAndSourceCriteriaByQuoteDemandProvider
      */
-    public function testFindCheckoutByCustomerUserAndSourceCriteriaByQuoteDemand($checkout, $workflowName): void
-    {
-        $customerUser = $this->getReference(LoadCustomerUserData::EMAIL);
-        $criteria = ['quoteDemand' => $this->getReference(LoadQuoteProductDemandData::QUOTE_DEMAND_1)];
-
-        $this->assertSame(
-            $this->getReference($checkout),
-            $this->getRepository()->findCheckoutByCustomerUserAndSourceCriteriaWithCurrency(
-                $customerUser,
-                $criteria,
-                $workflowName
-            )
+    public function testFindCheckoutByCustomerUserAndSourceCriteriaByQuoteDemand(
+        string $checkout,
+        string $workflowName
+    ): void {
+        $foundCheckout = $this->repository->findCheckoutByCustomerUserAndSourceCriteriaWithCurrency(
+            $this->getReference(LoadCustomerUserData::EMAIL),
+            ['quoteDemand' => $this->getReference(LoadQuoteProductDemandData::QUOTE_DEMAND_1)],
+            $workflowName
         );
+        self::assertSame($this->getReference($checkout), $foundCheckout);
     }
 
-    public function findCheckoutByCustomerUserAndSourceCriteriaByQuoteDemandProvider(): array
+    public static function findCheckoutByCustomerUserAndSourceCriteriaByQuoteDemandProvider(): array
     {
         return [
             'checkout' => [
                 BaseLoadQuoteCheckoutsData::CHECKOUT_1,
-                'b2b_flow_checkout',
+                'b2b_flow_checkout'
             ],
             'alternative checkout' => [
                 LoadQuoteAlternativeCheckoutsData::CHECKOUT_1,
-                'b2b_flow_alternative_checkout',
-            ],
+                'b2b_flow_alternative_checkout'
+            ]
         ];
     }
 }
