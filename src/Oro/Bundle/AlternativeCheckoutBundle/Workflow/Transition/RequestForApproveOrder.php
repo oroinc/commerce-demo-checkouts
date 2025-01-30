@@ -19,7 +19,7 @@ class RequestForApproveOrder extends TransitionServiceAbstract
     }
 
     #[\Override]
-    public function isConditionAllowed(WorkflowItem $workflowItem, Collection $errors = null): bool
+    public function isConditionAllowed(WorkflowItem $workflowItem, ?Collection $errors = null): bool
     {
         /** @var Checkout $checkout */
         $checkout = $workflowItem->getEntity();
