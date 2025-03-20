@@ -108,6 +108,8 @@ oro:
                     label: 'Data of approving'
                 requested_for_approve:
                     label: 'Is requested for approve'
+                captcha:
+                    label: 'CAPTCHA'
             transition:
                 __start__:
                     label: 'Create Order'
