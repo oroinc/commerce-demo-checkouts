@@ -38,21 +38,26 @@ Feature: Localized email notification after alternative checkout
     When I go to System / Emails / Templates
     And I filter Template Name as is equal to "order_confirmation_email"
     And I click "edit" on first row in grid
+    And I clear "Content" textarea in form "Email Template Form"
     And fill "Email Template Form" with:
       | Subject | English Order Confirmation Subject |
       | Content | English Order Confirmation Body    |
     And I click "French"
     And fill "Email Template Form" with:
-      | Subject Fallback | false                             |
-      | Content Fallback | false                             |
-      | Subject          | French Order Confirmation Subject |
-      | Content          | French Order Confirmation Body    |
+      | Subject Fallback | false |
+      | Content Fallback | false |
+    And I clear "Content" textarea in form "Email Template Form"
+    And fill "Email Template Form" with:
+      | Subject | French Order Confirmation Subject |
+      | Content | French Order Confirmation Body    |
     And I click "German"
     And fill "Email Template Form" with:
-      | Subject Fallback | false                             |
-      | Content Fallback | false                             |
-      | Subject          | German Order Confirmation Subject |
-      | Content          | German Order Confirmation Body    |
+      | Subject Fallback | false |
+      | Content Fallback | false |
+    And I clear "Content" textarea in form "Email Template Form"
+    And fill "Email Template Form" with:
+      | Subject | German Order Confirmation Subject |
+      | Content | German Order Confirmation Body    |
     And I submit form
     Then I should see "Template saved" flash message
 
