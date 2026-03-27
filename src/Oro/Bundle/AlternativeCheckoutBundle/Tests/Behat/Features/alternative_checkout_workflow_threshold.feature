@@ -31,6 +31,7 @@ Feature: Alternative Checkout workflow threshold
     And I select "Fifth avenue, 10115 Berlin, Germany" on the "Shipping Information" checkout step and press Continue
     And I check "Flat Rate" on the "Shipping Method" checkout step and press Continue
     And I check "Payment Terms" on the "Payment" checkout step and press Continue
+    And I click "Expand Checkout Footer"
     And I fill "Checkout Order Review Form" with:
       | PO Number              | TEST_PO_NUMBER     |
       | Notes                  | Customer test note |
