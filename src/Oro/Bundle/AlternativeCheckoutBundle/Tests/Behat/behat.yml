@@ -6,9 +6,7 @@ oro_behat_extension:
         - Oro\Bundle\FormBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\ConfigBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\DataGridBundle\Tests\Behat\Context\GridContext
-        - Oro\Bundle\WarehouseBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\CheckoutBundle\Tests\Behat\Context\FeatureContext
-        - Oro\Bundle\ShippingProBundle\Tests\Behat\Context\MultiplyCurrencyContext
         - Oro\Bundle\CustomerBundle\Tests\Behat\Context\CustomerUserContext
         - Oro\Bundle\ApplicationBundle\Tests\Behat\Context\CommerceMainContext
         - Oro\Bundle\ShoppingListBundle\Tests\Behat\Context\ShoppingListContext
@@ -35,7 +33,6 @@ oro_behat_extension:
         - Oro\Bundle\WebCatalogBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\ShippingBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\NavigationBundle\Tests\Behat\Context\TabContext
-        - Oro\Bundle\OrganizationProBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\PricingBundle\Tests\Behat\Context\FeatureContext
         - Oro\Bundle\CMSBundle\Tests\Behat\Context\FeatureContext
       paths:

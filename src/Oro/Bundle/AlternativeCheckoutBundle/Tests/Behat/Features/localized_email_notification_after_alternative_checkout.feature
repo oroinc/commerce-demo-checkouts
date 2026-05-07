@@ -3,8 +3,7 @@
 @fixture-OroUserBundle:UserLocalizations.yml
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
-@fixture-OroWarehouseBundle:Checkout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 
 Feature: Localized email notification after alternative checkout
   In order to finish alternative checkout

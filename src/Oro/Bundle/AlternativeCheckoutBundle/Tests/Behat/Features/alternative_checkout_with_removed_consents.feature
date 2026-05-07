@@ -3,7 +3,7 @@
 @fixture-OroFlatRateShippingBundle:FlatRateIntegration.yml
 @fixture-OroPaymentTermBundle:PaymentTermIntegration.yml
 @fixture-OroConsentBundle:ConsentLandingPagesFixture.yml
-@fixture-OroWarehouseBundle:AlternativeCheckout.yml
+@fixture-OroAlternativeCheckoutBundle:AlternativeCheckout.yml
 Feature: Alternative Checkout with removed consents
   In order to accept consents on Alternative Checkout
   As an Storefront User
