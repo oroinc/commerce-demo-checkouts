@@ -24,3 +24,7 @@ Perform the installation:
 ```
 php bin/console oro:platform:update --env=prod
 ```
+
+## License
+
+[OSL-3.0](LICENSE) Copyright (c) 2026 Oro Inc.
