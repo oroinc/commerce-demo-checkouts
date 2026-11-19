@@ -58,6 +58,8 @@ oro:
                     label: 'Payment validation required'
                 payment_save_for_later:
                     label: 'Save payment data for later use'
+                merchant_initiated_payment_consents:
+                    label: 'Merchant-initiated payment contract'
                 order:
                     label: 'Instance of Order entity'
                 save_billing_address:
@@ -167,6 +169,8 @@ oro:
                         payment_method:
                             label: ''
                         payment_save_for_later:
+                            label: ''
+                        merchant_initiated_payment_consents:
                             label: ''
                         payment_validate:
                             label: ''
